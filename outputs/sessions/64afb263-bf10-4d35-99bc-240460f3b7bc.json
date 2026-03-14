@@ -1,0 +1,1602 @@
+{
+  "session_id": "64afb263-bf10-4d35-99bc-240460f3b7bc",
+  "employee_profile": {
+    "name": "Riya",
+    "role_family": "backend",
+    "experience_level": "intern",
+    "tech_stack": [
+      "node.js"
+    ],
+    "department_hint": null,
+    "preinstalled_tools": [],
+    "email": null
+  },
+  "matched_persona": {
+    "persona_id": "riya-sharma-backend-intern-node-js",
+    "score": 1.0,
+    "reasons": [
+      "Role match: backend -> backend",
+      "Tech overlap: node.js",
+      "Experience alignment: intern -> intern"
+    ],
+    "persona": {
+      "persona_id": "riya-sharma-backend-intern-node-js",
+      "name": "Riya Sharma",
+      "title": "Riya Sharma — Backend Intern (Node.js)",
+      "role_family": "backend",
+      "experience_level": "intern",
+      "tech_stack": [
+        "node.js",
+        "javascript",
+        "basic typescript"
+      ],
+      "department": "Engineering — Backend Squad Beta",
+      "team": "Backend Squad Beta",
+      "manager_name": "Arjun Mehta",
+      "manager_email": null,
+      "mentor_name": "Priya Nair",
+      "mentor_email": null,
+      "email": "riya.sharma@novabyte.dev",
+      "start_date": "2025-02-03",
+      "location": "Bangalore (Remote)",
+      "focus_points": [
+        "Environment setup from scratch (Node.js, pnpm, Docker)",
+        "Git workflow training (branching, PRs, conventional commits)",
+        "Understanding the connector-runtime service",
+        "API standards walkthrough",
+        "Complete a starter bug fix task",
+        "Compliance training",
+        "Pair programming sessions with mentor"
+      ],
+      "raw_fields": {
+        "Name": "Riya Sharma",
+        "Employee ID": "NB-2025-0142",
+        "Role": "Software Engineering Intern",
+        "Department": "Engineering — Backend Squad Beta",
+        "Experience Level": "Intern (0 years)",
+        "Tech Stack": "Node.js, JavaScript, basic TypeScript",
+        "Education": "B.Tech Computer Science, 3rd year, IIT Hyderabad",
+        "Start Date": "2025-02-03",
+        "Manager": "Arjun Mehta (Squad Lead, Backend Beta)",
+        "Mentor": "Priya Nair (Senior Backend Engineer)",
+        "Location": "Bangalore (Remote)",
+        "Email": "riya.sharma@novabyte.dev",
+        "Duration": "6-month internship",
+        "Background": "Built 2 personal projects in Express.js. Basic understanding of REST APIs. No professional experience. Familiar with Git basics."
+      }
+    }
+  },
+  "task_plan": [
+    {
+      "task_id": "C-01",
+      "title": "Receive and set up company laptop",
+      "category": "IT Setup",
+      "deadline": "Day 1",
+      "owner": "IT Team",
+      "source_section": "Common Checklist (All Roles & Levels)",
+      "automation_mode": "self_serve",
+      "priority": "required",
+      "status": "completed",
+      "evidence_required": [],
+      "notes": null
+    },
+    {
+      "task_id": "C-02",
+      "title": "Activate NovaByte Google Workspace account (email, calendar, drive)",
+      "category": "Account Setup",
+      "deadline": "Day 1",
+      "owner": "IT Team",
+      "source_section": "Common Checklist (All Roles & Levels)",
+      "automation_mode": "self_serve",
+      "priority": "required",
+      "status": "skipped",
+      "evidence_required": [],
+      "notes": null
+    },
+    {
+      "task_id": "C-03",
+      "title": "Set up Slack and join mandatory channels (#engineering-general, #new-joiners, #team-{squad})",
+      "category": "Communication",
+      "deadline": "Day 1",
+      "owner": "Employee",
+      "source_section": "Common Checklist (All Roles & Levels)",
+      "automation_mode": "agent_browser",
+      "priority": "required",
+      "status": "completed",
+      "evidence_required": [],
+      "notes": null
+    },
+    {
+      "task_id": "C-04",
+      "title": "Set up 1Password (company password manager)",
+      "category": "Security",
+      "deadline": "Day 1",
+      "owner": "Employee",
+      "source_section": "Common Checklist (All Roles & Levels)",
+      "automation_mode": "self_serve",
+      "priority": "required",
+      "status": "completed",
+      "evidence_required": [],
+      "notes": null
+    },
+    {
+      "task_id": "C-05",
+      "title": "Enable MFA on Google Workspace",
+      "category": "Security",
+      "deadline": "Day 1",
+      "owner": "Employee",
+      "source_section": "Common Checklist (All Roles & Levels)",
+      "automation_mode": "self_serve",
+      "priority": "required",
+      "status": "completed",
+      "evidence_required": [],
+      "notes": null
+    },
+    {
+      "task_id": "C-06",
+      "title": "Enable MFA on GitHub",
+      "category": "Security",
+      "deadline": "Day 1",
+      "owner": "Employee",
+      "source_section": "Common Checklist (All Roles & Levels)",
+      "automation_mode": "self_serve",
+      "priority": "required",
+      "status": "completed",
+      "evidence_required": [],
+      "notes": null
+    },
+    {
+      "task_id": "C-07",
+      "title": "Accept GitHub organization invite (NovaByte-Technologies org)",
+      "category": "Access",
+      "deadline": "Day 1",
+      "owner": "Employee",
+      "source_section": "Common Checklist (All Roles & Levels)",
+      "automation_mode": "agent_browser",
+      "priority": "required",
+      "status": "completed",
+      "evidence_required": [],
+      "notes": null
+    },
+    {
+      "task_id": "C-08",
+      "title": "Accept Jira workspace invite",
+      "category": "Access",
+      "deadline": "Day 1",
+      "owner": "Employee",
+      "source_section": "Common Checklist (All Roles & Levels)",
+      "automation_mode": "agent_browser",
+      "priority": "required",
+      "status": "completed",
+      "evidence_required": [],
+      "notes": null
+    },
+    {
+      "task_id": "C-09",
+      "title": "Join Notion workspace and bookmark Engineering space",
+      "category": "Knowledge",
+      "deadline": "Day 1",
+      "owner": "Employee",
+      "source_section": "Common Checklist (All Roles & Levels)",
+      "automation_mode": "knowledge",
+      "priority": "optional",
+      "status": "completed",
+      "evidence_required": [
+        "acknowledged"
+      ],
+      "notes": null
+    },
+    {
+      "task_id": "C-10",
+      "title": "Install and configure VPN (WireGuard)",
+      "category": "Network",
+      "deadline": "Day 1",
+      "owner": "Employee",
+      "source_section": "Common Checklist (All Roles & Levels)",
+      "automation_mode": "agent_terminal",
+      "priority": "required",
+      "status": "completed",
+      "evidence_required": [],
+      "notes": null
+    },
+    {
+      "task_id": "C-11",
+      "title": "Read Company Overview document (KB-001)",
+      "category": "Knowledge",
+      "deadline": "Day 2",
+      "owner": "Employee",
+      "source_section": "Common Checklist (All Roles & Levels)",
+      "automation_mode": "knowledge",
+      "priority": "optional",
+      "status": "completed",
+      "evidence_required": [
+        "acknowledged"
+      ],
+      "notes": null
+    },
+    {
+      "task_id": "C-12",
+      "title": "Read Engineering Standards document (KB-002)",
+      "category": "Knowledge",
+      "deadline": "Day 2",
+      "owner": "Employee",
+      "source_section": "Common Checklist (All Roles & Levels)",
+      "automation_mode": "knowledge",
+      "priority": "optional",
+      "status": "completed",
+      "evidence_required": [
+        "acknowledged"
+      ],
+      "notes": null
+    },
+    {
+      "task_id": "C-13",
+      "title": "Read Company Policies document (KB-005)",
+      "category": "Knowledge",
+      "deadline": "Day 3",
+      "owner": "Employee",
+      "source_section": "Common Checklist (All Roles & Levels)",
+      "automation_mode": "knowledge",
+      "priority": "optional",
+      "status": "completed",
+      "evidence_required": [
+        "acknowledged"
+      ],
+      "notes": null
+    },
+    {
+      "task_id": "C-14",
+      "title": "Complete Security Awareness training (LMS)",
+      "category": "Compliance",
+      "deadline": "Week 1",
+      "owner": "Employee",
+      "source_section": "Common Checklist (All Roles & Levels)",
+      "automation_mode": "manual_external",
+      "priority": "deferred",
+      "status": "completed",
+      "evidence_required": [
+        "status update"
+      ],
+      "notes": null
+    },
+    {
+      "task_id": "C-15",
+      "title": "Complete Data Privacy & GDPR training (LMS)",
+      "category": "Compliance",
+      "deadline": "Week 1",
+      "owner": "Employee",
+      "source_section": "Common Checklist (All Roles & Levels)",
+      "automation_mode": "manual_external",
+      "priority": "deferred",
+      "status": "completed",
+      "evidence_required": [
+        "status update"
+      ],
+      "notes": null
+    },
+    {
+      "task_id": "C-16",
+      "title": "Complete Code of Conduct training (LMS)",
+      "category": "Compliance",
+      "deadline": "Week 1",
+      "owner": "Employee",
+      "source_section": "Common Checklist (All Roles & Levels)",
+      "automation_mode": "manual_external",
+      "priority": "deferred",
+      "status": "completed",
+      "evidence_required": [
+        "status update"
+      ],
+      "notes": null
+    },
+    {
+      "task_id": "C-17",
+      "title": "Complete Anti-Harassment training (LMS)",
+      "category": "Compliance",
+      "deadline": "Week 2",
+      "owner": "Employee",
+      "source_section": "Common Checklist (All Roles & Levels)",
+      "automation_mode": "manual_external",
+      "priority": "deferred",
+      "status": "completed",
+      "evidence_required": [
+        "status update"
+      ],
+      "notes": null
+    },
+    {
+      "task_id": "C-18",
+      "title": "Complete Insider Threat Awareness training (LMS)",
+      "category": "Compliance",
+      "deadline": "Week 2",
+      "owner": "Employee",
+      "source_section": "Common Checklist (All Roles & Levels)",
+      "automation_mode": "manual_external",
+      "priority": "deferred",
+      "status": "completed",
+      "evidence_required": [
+        "status update"
+      ],
+      "notes": null
+    },
+    {
+      "task_id": "C-19",
+      "title": "Sign Employee Handbook Acknowledgment (DocuSign)",
+      "category": "Compliance",
+      "deadline": "Week 1",
+      "owner": "Employee",
+      "source_section": "Common Checklist (All Roles & Levels)",
+      "automation_mode": "agent_browser",
+      "priority": "deferred",
+      "status": "completed",
+      "evidence_required": [],
+      "notes": null
+    },
+    {
+      "task_id": "C-20",
+      "title": "Sign NDA (DocuSign)",
+      "category": "Compliance",
+      "deadline": "Week 1",
+      "owner": "Employee",
+      "source_section": "Common Checklist (All Roles & Levels)",
+      "automation_mode": "agent_browser",
+      "priority": "deferred",
+      "status": "completed",
+      "evidence_required": [],
+      "notes": null
+    },
+    {
+      "task_id": "C-21",
+      "title": "Sign Acceptable Use Policy (DocuSign)",
+      "category": "Compliance",
+      "deadline": "Week 1",
+      "owner": "Employee",
+      "source_section": "Common Checklist (All Roles & Levels)",
+      "automation_mode": "agent_browser",
+      "priority": "deferred",
+      "status": "completed",
+      "evidence_required": [],
+      "notes": null
+    },
+    {
+      "task_id": "C-22",
+      "title": "Sign IP Assignment Agreement (DocuSign)",
+      "category": "Compliance",
+      "deadline": "Week 1",
+      "owner": "Employee",
+      "source_section": "Common Checklist (All Roles & Levels)",
+      "automation_mode": "agent_browser",
+      "priority": "deferred",
+      "status": "completed",
+      "evidence_required": [],
+      "notes": null
+    },
+    {
+      "task_id": "C-23",
+      "title": "Attend welcome call with HR",
+      "category": "Onboarding",
+      "deadline": "Day 1",
+      "owner": "HR",
+      "source_section": "Common Checklist (All Roles & Levels)",
+      "automation_mode": "manual_external",
+      "priority": "deferred",
+      "status": "completed",
+      "evidence_required": [
+        "status update"
+      ],
+      "notes": null
+    },
+    {
+      "task_id": "C-24",
+      "title": "Meet your manager (1:1 intro call)",
+      "category": "Onboarding",
+      "deadline": "Day 1",
+      "owner": "Manager",
+      "source_section": "Common Checklist (All Roles & Levels)",
+      "automation_mode": "manual_external",
+      "priority": "deferred",
+      "status": "completed",
+      "evidence_required": [
+        "status update"
+      ],
+      "notes": null
+    },
+    {
+      "task_id": "C-25",
+      "title": "Meet your mentor/buddy (intro call)",
+      "category": "Onboarding",
+      "deadline": "Day 1-2",
+      "owner": "Mentor",
+      "source_section": "Common Checklist (All Roles & Levels)",
+      "automation_mode": "manual_external",
+      "priority": "deferred",
+      "status": "completed",
+      "evidence_required": [
+        "status update"
+      ],
+      "notes": null
+    },
+    {
+      "task_id": "C-26",
+      "title": "Attend team standup",
+      "category": "Onboarding",
+      "deadline": "Day 2",
+      "owner": "Employee",
+      "source_section": "Common Checklist (All Roles & Levels)",
+      "automation_mode": "manual_external",
+      "priority": "deferred",
+      "status": "completed",
+      "evidence_required": [
+        "status update"
+      ],
+      "notes": null
+    },
+    {
+      "task_id": "C-27",
+      "title": "Set up BambooHR profile (personal details, emergency contacts)",
+      "category": "HR",
+      "deadline": "Week 1",
+      "owner": "Employee",
+      "source_section": "Common Checklist (All Roles & Levels)",
+      "automation_mode": "manual_external",
+      "priority": "deferred",
+      "status": "completed",
+      "evidence_required": [
+        "status update"
+      ],
+      "notes": null
+    },
+    {
+      "task_id": "C-28",
+      "title": "Set up Expensify account",
+      "category": "Finance",
+      "deadline": "Week 1",
+      "owner": "Employee",
+      "source_section": "Common Checklist (All Roles & Levels)",
+      "automation_mode": "manual_external",
+      "priority": "deferred",
+      "status": "completed",
+      "evidence_required": [
+        "status update"
+      ],
+      "notes": null
+    },
+    {
+      "task_id": "BI-01",
+      "title": "Install Node.js 20 via nvm",
+      "category": "Environment Setup",
+      "deadline": "Day 1",
+      "owner": null,
+      "source_section": "Backend Intern Checklist (Node.js)",
+      "automation_mode": "agent_terminal",
+      "priority": "required",
+      "status": "completed",
+      "evidence_required": [
+        "node --version"
+      ],
+      "notes": null
+    },
+    {
+      "task_id": "BI-02",
+      "title": "Install pnpm and global tools (TypeScript, nodemon)",
+      "category": "Environment Setup",
+      "deadline": "Day 1",
+      "owner": null,
+      "source_section": "Backend Intern Checklist (Node.js)",
+      "automation_mode": "agent_terminal",
+      "priority": "required",
+      "status": "completed",
+      "evidence_required": [
+        "pnpm --version"
+      ],
+      "notes": null
+    },
+    {
+      "task_id": "BI-03",
+      "title": "Install Docker Desktop",
+      "category": "Environment Setup",
+      "deadline": "Day 1",
+      "owner": null,
+      "source_section": "Backend Intern Checklist (Node.js)",
+      "automation_mode": "agent_terminal",
+      "priority": "required",
+      "status": "completed",
+      "evidence_required": [],
+      "notes": null
+    },
+    {
+      "task_id": "BI-04",
+      "title": "Install VS Code with mandatory extensions",
+      "category": "Environment Setup",
+      "deadline": "Day 1",
+      "owner": null,
+      "source_section": "Backend Intern Checklist (Node.js)",
+      "automation_mode": "agent_terminal",
+      "priority": "required",
+      "status": "completed",
+      "evidence_required": [],
+      "notes": null
+    },
+    {
+      "task_id": "BI-05",
+      "title": "Clone assigned repository (connector-runtime)",
+      "category": "Environment Setup",
+      "deadline": "Day 2",
+      "owner": null,
+      "source_section": "Backend Intern Checklist (Node.js)",
+      "automation_mode": "agent_terminal",
+      "priority": "required",
+      "status": "completed",
+      "evidence_required": [],
+      "notes": null
+    },
+    {
+      "task_id": "BI-06",
+      "title": "Set up local environment (.env configuration)",
+      "category": "Environment Setup",
+      "deadline": "Day 2",
+      "owner": null,
+      "source_section": "Backend Intern Checklist (Node.js)",
+      "automation_mode": "self_serve",
+      "priority": "required",
+      "status": "completed",
+      "evidence_required": [],
+      "notes": null
+    },
+    {
+      "task_id": "BI-07",
+      "title": "Run Docker Compose for local dependencies",
+      "category": "Environment Setup",
+      "deadline": "Day 2",
+      "owner": null,
+      "source_section": "Backend Intern Checklist (Node.js)",
+      "automation_mode": "agent_terminal",
+      "priority": "required",
+      "status": "completed",
+      "evidence_required": [],
+      "notes": null
+    },
+    {
+      "task_id": "BI-08",
+      "title": "Run database migrations and seed data",
+      "category": "Environment Setup",
+      "deadline": "Day 2",
+      "owner": null,
+      "source_section": "Backend Intern Checklist (Node.js)",
+      "automation_mode": "agent_terminal",
+      "priority": "required",
+      "status": "completed",
+      "evidence_required": [],
+      "notes": null
+    },
+    {
+      "task_id": "BI-09",
+      "title": "Successfully start the service locally",
+      "category": "Environment Setup",
+      "deadline": "Day 2",
+      "owner": null,
+      "source_section": "Backend Intern Checklist (Node.js)",
+      "automation_mode": "self_serve",
+      "priority": "required",
+      "status": "completed",
+      "evidence_required": [],
+      "notes": null
+    },
+    {
+      "task_id": "BI-10",
+      "title": "Run unit tests and verify all pass",
+      "category": "Verification",
+      "deadline": "Day 2",
+      "owner": null,
+      "source_section": "Backend Intern Checklist (Node.js)",
+      "automation_mode": "agent_terminal",
+      "priority": "required",
+      "status": "completed",
+      "evidence_required": [],
+      "notes": null
+    },
+    {
+      "task_id": "BI-11",
+      "title": "Read Architecture Documentation — Backend section (KB-003)",
+      "category": "Knowledge",
+      "deadline": "Day 3",
+      "owner": null,
+      "source_section": "Backend Intern Checklist (Node.js)",
+      "automation_mode": "knowledge",
+      "priority": "optional",
+      "status": "completed",
+      "evidence_required": [
+        "acknowledged"
+      ],
+      "notes": null
+    },
+    {
+      "task_id": "BI-12",
+      "title": "Read API Standards section of Engineering Standards (KB-002)",
+      "category": "Knowledge",
+      "deadline": "Day 3",
+      "owner": null,
+      "source_section": "Backend Intern Checklist (Node.js)",
+      "automation_mode": "knowledge",
+      "priority": "optional",
+      "status": "completed",
+      "evidence_required": [
+        "acknowledged"
+      ],
+      "notes": null
+    },
+    {
+      "task_id": "BI-13",
+      "title": "Read Git & Branching Strategy section (KB-002)",
+      "category": "Knowledge",
+      "deadline": "Day 3",
+      "owner": null,
+      "source_section": "Backend Intern Checklist (Node.js)",
+      "automation_mode": "knowledge",
+      "priority": "optional",
+      "status": "completed",
+      "evidence_required": [
+        "acknowledged"
+      ],
+      "notes": null
+    },
+    {
+      "task_id": "BI-14",
+      "title": "Read PR Guidelines section (KB-002)",
+      "category": "Knowledge",
+      "deadline": "Day 3",
+      "owner": null,
+      "source_section": "Backend Intern Checklist (Node.js)",
+      "automation_mode": "knowledge",
+      "priority": "optional",
+      "status": "completed",
+      "evidence_required": [
+        "acknowledged"
+      ],
+      "notes": null
+    },
+    {
+      "task_id": "BI-15",
+      "title": "Complete Git workflow practice (create branch, make commit, open PR)",
+      "category": "Skill Building",
+      "deadline": "Day 4",
+      "owner": null,
+      "source_section": "Backend Intern Checklist (Node.js)",
+      "automation_mode": "self_serve",
+      "priority": "deferred",
+      "status": "completed",
+      "evidence_required": [],
+      "notes": null
+    },
+    {
+      "task_id": "BI-16",
+      "title": "Attend codebase walkthrough with mentor",
+      "category": "Knowledge",
+      "deadline": "Week 1",
+      "owner": null,
+      "source_section": "Backend Intern Checklist (Node.js)",
+      "automation_mode": "knowledge",
+      "priority": "deferred",
+      "status": "completed",
+      "evidence_required": [
+        "acknowledged"
+      ],
+      "notes": null
+    },
+    {
+      "task_id": "BI-17",
+      "title": "Attend pair programming session with mentor",
+      "category": "Skill Building",
+      "deadline": "Week 1",
+      "owner": null,
+      "source_section": "Backend Intern Checklist (Node.js)",
+      "automation_mode": "self_serve",
+      "priority": "deferred",
+      "status": "not_started",
+      "evidence_required": [],
+      "notes": null
+    },
+    {
+      "task_id": "BI-18",
+      "title": "Pick up starter ticket (FLOW-INTERN-001: Fix validation bug)",
+      "category": "First Task",
+      "deadline": "Week 2",
+      "owner": null,
+      "source_section": "Backend Intern Checklist (Node.js)",
+      "automation_mode": "self_serve",
+      "priority": "deferred",
+      "status": "not_started",
+      "evidence_required": [],
+      "notes": null
+    },
+    {
+      "task_id": "BI-19",
+      "title": "Submit PR for starter ticket",
+      "category": "First Task",
+      "deadline": "Week 2",
+      "owner": null,
+      "source_section": "Backend Intern Checklist (Node.js)",
+      "automation_mode": "self_serve",
+      "priority": "deferred",
+      "status": "not_started",
+      "evidence_required": [],
+      "notes": null
+    },
+    {
+      "task_id": "BI-20",
+      "title": "Get PR approved and merged",
+      "category": "First Task",
+      "deadline": "Week 2",
+      "owner": null,
+      "source_section": "Backend Intern Checklist (Node.js)",
+      "automation_mode": "self_serve",
+      "priority": "deferred",
+      "status": "not_started",
+      "evidence_required": [],
+      "notes": null
+    }
+  ],
+  "current_task_id": "BI-17",
+  "verification_log": [
+    {
+      "task_id": "C-01",
+      "task_title": "Receive and set up company laptop",
+      "status": "completed",
+      "method": "self_reported",
+      "details": "Completed by user.",
+      "timestamp": "2026-03-14T15:02:04.862710",
+      "artifacts": [],
+      "verified_values": {}
+    },
+    {
+      "task_id": "C-02",
+      "task_title": "Activate NovaByte Google Workspace account (email, calendar, drive)",
+      "status": "blocked",
+      "method": "agent",
+      "details": "No deterministic execution path defined for this task.",
+      "timestamp": "2026-03-14T15:02:07.054809",
+      "artifacts": [],
+      "verified_values": {}
+    },
+    {
+      "task_id": "C-02",
+      "task_title": "Activate NovaByte Google Workspace account (email, calendar, drive)",
+      "status": "skipped",
+      "method": "skip",
+      "details": "Skipped from UI",
+      "timestamp": "2026-03-14T15:02:09.112417",
+      "artifacts": [],
+      "verified_values": {}
+    },
+    {
+      "task_id": "C-03",
+      "task_title": "Set up Slack and join mandatory channels (#engineering-general, #new-joiners, #team-{squad})",
+      "status": "completed",
+      "method": "agent",
+      "details": "url=https://novabyte-demo.slack.com",
+      "timestamp": "2026-03-14T15:03:29.677465",
+      "artifacts": [],
+      "verified_values": {
+        "url": "https://novabyte-demo.slack.com"
+      }
+    },
+    {
+      "task_id": "C-04",
+      "task_title": "Set up 1Password (company password manager)",
+      "status": "blocked",
+      "method": "agent",
+      "details": "No deterministic execution path defined for this task.",
+      "timestamp": "2026-03-14T15:03:30.790714",
+      "artifacts": [],
+      "verified_values": {}
+    },
+    {
+      "task_id": "C-04",
+      "task_title": "Set up 1Password (company password manager)",
+      "status": "completed",
+      "method": "self_reported",
+      "details": "Completed by user.",
+      "timestamp": "2026-03-14T15:03:51.783623",
+      "artifacts": [],
+      "verified_values": {}
+    },
+    {
+      "task_id": "C-05",
+      "task_title": "Enable MFA on Google Workspace",
+      "status": "completed",
+      "method": "self_reported",
+      "details": "Completed by user.",
+      "timestamp": "2026-03-14T15:03:59.768017",
+      "artifacts": [],
+      "verified_values": {}
+    },
+    {
+      "task_id": "C-06",
+      "task_title": "Enable MFA on GitHub",
+      "status": "completed",
+      "method": "self_reported",
+      "details": "Completed by user.",
+      "timestamp": "2026-03-14T15:04:02.118716",
+      "artifacts": [],
+      "verified_values": {}
+    },
+    {
+      "task_id": "C-07",
+      "task_title": "Accept GitHub organization invite (NovaByte-Technologies org)",
+      "status": "completed",
+      "method": "self_reported",
+      "details": "Completed by user.",
+      "timestamp": "2026-03-14T15:04:03.553723",
+      "artifacts": [],
+      "verified_values": {}
+    },
+    {
+      "task_id": "C-08",
+      "task_title": "Accept Jira workspace invite",
+      "status": "completed",
+      "method": "self_reported",
+      "details": "Completed by user.",
+      "timestamp": "2026-03-14T15:04:06.857531",
+      "artifacts": [],
+      "verified_values": {}
+    },
+    {
+      "task_id": "C-09",
+      "task_title": "Join Notion workspace and bookmark Engineering space",
+      "status": "completed",
+      "method": "self_reported",
+      "details": "Completed by user.",
+      "timestamp": "2026-03-14T15:04:08.803726",
+      "artifacts": [],
+      "verified_values": {}
+    },
+    {
+      "task_id": "C-10",
+      "task_title": "Install and configure VPN (WireGuard)",
+      "status": "completed",
+      "method": "self_reported",
+      "details": "Completed by user.",
+      "timestamp": "2026-03-14T15:04:10.524662",
+      "artifacts": [],
+      "verified_values": {}
+    },
+    {
+      "task_id": "C-11",
+      "task_title": "Read Company Overview document (KB-001)",
+      "status": "completed",
+      "method": "self_reported",
+      "details": "Completed by user.",
+      "timestamp": "2026-03-14T15:04:12.701022",
+      "artifacts": [],
+      "verified_values": {}
+    },
+    {
+      "task_id": "C-12",
+      "task_title": "Read Engineering Standards document (KB-002)",
+      "status": "completed",
+      "method": "self_reported",
+      "details": "Completed by user.",
+      "timestamp": "2026-03-14T15:04:14.301409",
+      "artifacts": [],
+      "verified_values": {}
+    },
+    {
+      "task_id": "C-13",
+      "task_title": "Read Company Policies document (KB-005)",
+      "status": "completed",
+      "method": "self_reported",
+      "details": "Completed by user.",
+      "timestamp": "2026-03-14T15:04:16.106338",
+      "artifacts": [],
+      "verified_values": {}
+    },
+    {
+      "task_id": "C-14",
+      "task_title": "Complete Security Awareness training (LMS)",
+      "status": "completed",
+      "method": "self_reported",
+      "details": "Completed by user.",
+      "timestamp": "2026-03-14T15:04:29.058253",
+      "artifacts": [],
+      "verified_values": {}
+    },
+    {
+      "task_id": "C-15",
+      "task_title": "Complete Data Privacy & GDPR training (LMS)",
+      "status": "completed",
+      "method": "self_reported",
+      "details": "Completed by user.",
+      "timestamp": "2026-03-14T15:04:30.831519",
+      "artifacts": [],
+      "verified_values": {}
+    },
+    {
+      "task_id": "C-16",
+      "task_title": "Complete Code of Conduct training (LMS)",
+      "status": "completed",
+      "method": "self_reported",
+      "details": "Completed by user.",
+      "timestamp": "2026-03-14T15:04:32.172029",
+      "artifacts": [],
+      "verified_values": {}
+    },
+    {
+      "task_id": "C-17",
+      "task_title": "Complete Anti-Harassment training (LMS)",
+      "status": "completed",
+      "method": "self_reported",
+      "details": "Completed by user.",
+      "timestamp": "2026-03-14T15:04:33.833727",
+      "artifacts": [],
+      "verified_values": {}
+    },
+    {
+      "task_id": "C-18",
+      "task_title": "Complete Insider Threat Awareness training (LMS)",
+      "status": "completed",
+      "method": "self_reported",
+      "details": "Completed by user.",
+      "timestamp": "2026-03-14T15:04:35.522958",
+      "artifacts": [],
+      "verified_values": {}
+    },
+    {
+      "task_id": "C-19",
+      "task_title": "Sign Employee Handbook Acknowledgment (DocuSign)",
+      "status": "completed",
+      "method": "self_reported",
+      "details": "Completed by user.",
+      "timestamp": "2026-03-14T15:04:37.049379",
+      "artifacts": [],
+      "verified_values": {}
+    },
+    {
+      "task_id": "C-20",
+      "task_title": "Sign NDA (DocuSign)",
+      "status": "completed",
+      "method": "self_reported",
+      "details": "Completed by user.",
+      "timestamp": "2026-03-14T15:04:38.367808",
+      "artifacts": [],
+      "verified_values": {}
+    },
+    {
+      "task_id": "C-21",
+      "task_title": "Sign Acceptable Use Policy (DocuSign)",
+      "status": "completed",
+      "method": "self_reported",
+      "details": "Completed by user.",
+      "timestamp": "2026-03-14T15:04:40.299128",
+      "artifacts": [],
+      "verified_values": {}
+    },
+    {
+      "task_id": "C-22",
+      "task_title": "Sign IP Assignment Agreement (DocuSign)",
+      "status": "completed",
+      "method": "self_reported",
+      "details": "Completed by user.",
+      "timestamp": "2026-03-14T15:04:42.077931",
+      "artifacts": [],
+      "verified_values": {}
+    },
+    {
+      "task_id": "C-23",
+      "task_title": "Attend welcome call with HR",
+      "status": "completed",
+      "method": "self_reported",
+      "details": "Completed by user.",
+      "timestamp": "2026-03-14T15:04:44.070935",
+      "artifacts": [],
+      "verified_values": {}
+    },
+    {
+      "task_id": "C-24",
+      "task_title": "Meet your manager (1:1 intro call)",
+      "status": "completed",
+      "method": "self_reported",
+      "details": "Completed by user.",
+      "timestamp": "2026-03-14T15:04:45.334958",
+      "artifacts": [],
+      "verified_values": {}
+    },
+    {
+      "task_id": "C-25",
+      "task_title": "Meet your mentor/buddy (intro call)",
+      "status": "completed",
+      "method": "self_reported",
+      "details": "Completed by user.",
+      "timestamp": "2026-03-14T15:04:50.737509",
+      "artifacts": [],
+      "verified_values": {}
+    },
+    {
+      "task_id": "C-26",
+      "task_title": "Attend team standup",
+      "status": "completed",
+      "method": "self_reported",
+      "details": "Completed by user.",
+      "timestamp": "2026-03-14T15:04:53.223727",
+      "artifacts": [],
+      "verified_values": {}
+    },
+    {
+      "task_id": "C-27",
+      "task_title": "Set up BambooHR profile (personal details, emergency contacts)",
+      "status": "completed",
+      "method": "self_reported",
+      "details": "Completed by user.",
+      "timestamp": "2026-03-14T15:05:01.721024",
+      "artifacts": [],
+      "verified_values": {}
+    },
+    {
+      "task_id": "C-28",
+      "task_title": "Set up Expensify account",
+      "status": "completed",
+      "method": "self_reported",
+      "details": "Completed by user.",
+      "timestamp": "2026-03-14T15:05:03.503248",
+      "artifacts": [],
+      "verified_values": {}
+    },
+    {
+      "task_id": "BI-01",
+      "task_title": "Install Node.js 20 via nvm",
+      "status": "completed",
+      "method": "self_reported",
+      "details": "Completed by user.",
+      "timestamp": "2026-03-14T15:05:04.851234",
+      "artifacts": [],
+      "verified_values": {}
+    },
+    {
+      "task_id": "BI-02",
+      "task_title": "Install pnpm and global tools (TypeScript, nodemon)",
+      "status": "completed",
+      "method": "self_reported",
+      "details": "Completed by user.",
+      "timestamp": "2026-03-14T15:05:06.089035",
+      "artifacts": [],
+      "verified_values": {}
+    },
+    {
+      "task_id": "BI-03",
+      "task_title": "Install Docker Desktop",
+      "status": "completed",
+      "method": "self_reported",
+      "details": "Completed by user.",
+      "timestamp": "2026-03-14T15:05:07.213948",
+      "artifacts": [],
+      "verified_values": {}
+    },
+    {
+      "task_id": "BI-04",
+      "task_title": "Install VS Code with mandatory extensions",
+      "status": "completed",
+      "method": "self_reported",
+      "details": "Completed by user.",
+      "timestamp": "2026-03-14T15:05:09.905986",
+      "artifacts": [],
+      "verified_values": {}
+    },
+    {
+      "task_id": "BI-05",
+      "task_title": "Clone assigned repository (connector-runtime)",
+      "status": "completed",
+      "method": "self_reported",
+      "details": "Completed by user.",
+      "timestamp": "2026-03-14T15:05:11.923835",
+      "artifacts": [],
+      "verified_values": {}
+    },
+    {
+      "task_id": "BI-06",
+      "task_title": "Set up local environment (.env configuration)",
+      "status": "completed",
+      "method": "self_reported",
+      "details": "Completed by user.",
+      "timestamp": "2026-03-14T15:05:14.420394",
+      "artifacts": [],
+      "verified_values": {}
+    },
+    {
+      "task_id": "BI-07",
+      "task_title": "Run Docker Compose for local dependencies",
+      "status": "completed",
+      "method": "self_reported",
+      "details": "Completed by user.",
+      "timestamp": "2026-03-14T15:05:15.659182",
+      "artifacts": [],
+      "verified_values": {}
+    },
+    {
+      "task_id": "BI-08",
+      "task_title": "Run database migrations and seed data",
+      "status": "completed",
+      "method": "self_reported",
+      "details": "Completed by user.",
+      "timestamp": "2026-03-14T15:05:18.252995",
+      "artifacts": [],
+      "verified_values": {}
+    },
+    {
+      "task_id": "BI-09",
+      "task_title": "Successfully start the service locally",
+      "status": "completed",
+      "method": "self_reported",
+      "details": "Completed by user.",
+      "timestamp": "2026-03-14T15:05:20.383066",
+      "artifacts": [],
+      "verified_values": {}
+    },
+    {
+      "task_id": "BI-10",
+      "task_title": "Run unit tests and verify all pass",
+      "status": "completed",
+      "method": "self_reported",
+      "details": "Completed by user.",
+      "timestamp": "2026-03-14T15:05:21.453577",
+      "artifacts": [],
+      "verified_values": {}
+    },
+    {
+      "task_id": "BI-11",
+      "task_title": "Read Architecture Documentation — Backend section (KB-003)",
+      "status": "completed",
+      "method": "self_reported",
+      "details": "Completed by user.",
+      "timestamp": "2026-03-14T15:05:31.194164",
+      "artifacts": [],
+      "verified_values": {}
+    },
+    {
+      "task_id": "BI-12",
+      "task_title": "Read API Standards section of Engineering Standards (KB-002)",
+      "status": "completed",
+      "method": "self_reported",
+      "details": "Completed by user.",
+      "timestamp": "2026-03-14T15:05:33.453771",
+      "artifacts": [],
+      "verified_values": {}
+    },
+    {
+      "task_id": "BI-13",
+      "task_title": "Read Git & Branching Strategy section (KB-002)",
+      "status": "completed",
+      "method": "self_reported",
+      "details": "Completed by user.",
+      "timestamp": "2026-03-14T15:05:34.835598",
+      "artifacts": [],
+      "verified_values": {}
+    },
+    {
+      "task_id": "BI-14",
+      "task_title": "Read PR Guidelines section (KB-002)",
+      "status": "completed",
+      "method": "self_reported",
+      "details": "Completed by user.",
+      "timestamp": "2026-03-14T15:05:36.717391",
+      "artifacts": [],
+      "verified_values": {}
+    },
+    {
+      "task_id": "BI-15",
+      "task_title": "Complete Git workflow practice (create branch, make commit, open PR)",
+      "status": "completed",
+      "method": "agent",
+      "details": "branch=feat/flow-intern-001-setup-env",
+      "timestamp": "2026-03-14T15:05:39.573313",
+      "artifacts": [],
+      "verified_values": {
+        "branch": "feat/flow-intern-001-setup-env"
+      }
+    },
+    {
+      "task_id": "BI-16",
+      "task_title": "Attend codebase walkthrough with mentor",
+      "status": "completed",
+      "method": "self_reported",
+      "details": "Completed by user.",
+      "timestamp": "2026-03-14T15:05:47.413885",
+      "artifacts": [],
+      "verified_values": {}
+    }
+  ],
+  "artifact_paths": [],
+  "completion_status": "completed",
+  "dashboard_state": {
+    "stream_url": "https://example.invalid/mock-novnc",
+    "current_task": "Attend pair programming session with mentor",
+    "latest_status": "Stage 5: HR completion artifacts generated",
+    "items": [
+      {
+        "task_id": "C-01",
+        "title": "Receive and set up company laptop",
+        "status": "completed",
+        "detail": "Completed by user.",
+        "timestamp": "2026-03-14T15:02:04"
+      },
+      {
+        "task_id": "C-02",
+        "title": "Activate NovaByte Google Workspace account (email, calendar, drive)",
+        "status": "skipped",
+        "detail": "Skipped from UI",
+        "timestamp": "2026-03-14T15:02:09"
+      },
+      {
+        "task_id": "C-03",
+        "title": "Set up Slack and join mandatory channels (#engineering-general, #new-joiners, #team-{squad})",
+        "status": "completed",
+        "detail": "url=https://novabyte-demo.slack.com",
+        "timestamp": "2026-03-14T15:03:29"
+      },
+      {
+        "task_id": "C-04",
+        "title": "Set up 1Password (company password manager)",
+        "status": "completed",
+        "detail": "Completed by user.",
+        "timestamp": "2026-03-14T15:03:51"
+      },
+      {
+        "task_id": "C-05",
+        "title": "Enable MFA on Google Workspace",
+        "status": "completed",
+        "detail": "Completed by user.",
+        "timestamp": "2026-03-14T15:03:59"
+      },
+      {
+        "task_id": "C-06",
+        "title": "Enable MFA on GitHub",
+        "status": "completed",
+        "detail": "Completed by user.",
+        "timestamp": "2026-03-14T15:04:02"
+      },
+      {
+        "task_id": "C-07",
+        "title": "Accept GitHub organization invite (NovaByte-Technologies org)",
+        "status": "completed",
+        "detail": "Completed by user.",
+        "timestamp": "2026-03-14T15:04:03"
+      },
+      {
+        "task_id": "C-08",
+        "title": "Accept Jira workspace invite",
+        "status": "completed",
+        "detail": "Completed by user.",
+        "timestamp": "2026-03-14T15:04:06"
+      },
+      {
+        "task_id": "C-09",
+        "title": "Join Notion workspace and bookmark Engineering space",
+        "status": "completed",
+        "detail": "Completed by user.",
+        "timestamp": "2026-03-14T15:04:08"
+      },
+      {
+        "task_id": "C-10",
+        "title": "Install and configure VPN (WireGuard)",
+        "status": "completed",
+        "detail": "Completed by user.",
+        "timestamp": "2026-03-14T15:04:10"
+      },
+      {
+        "task_id": "C-11",
+        "title": "Read Company Overview document (KB-001)",
+        "status": "completed",
+        "detail": "Completed by user.",
+        "timestamp": "2026-03-14T15:04:12"
+      },
+      {
+        "task_id": "C-12",
+        "title": "Read Engineering Standards document (KB-002)",
+        "status": "completed",
+        "detail": "Completed by user.",
+        "timestamp": "2026-03-14T15:04:14"
+      },
+      {
+        "task_id": "C-13",
+        "title": "Read Company Policies document (KB-005)",
+        "status": "completed",
+        "detail": "Completed by user.",
+        "timestamp": "2026-03-14T15:04:16"
+      },
+      {
+        "task_id": "C-14",
+        "title": "Complete Security Awareness training (LMS)",
+        "status": "completed",
+        "detail": "Completed by user.",
+        "timestamp": "2026-03-14T15:04:29"
+      },
+      {
+        "task_id": "C-15",
+        "title": "Complete Data Privacy & GDPR training (LMS)",
+        "status": "completed",
+        "detail": "Completed by user.",
+        "timestamp": "2026-03-14T15:04:30"
+      },
+      {
+        "task_id": "C-16",
+        "title": "Complete Code of Conduct training (LMS)",
+        "status": "completed",
+        "detail": "Completed by user.",
+        "timestamp": "2026-03-14T15:04:32"
+      },
+      {
+        "task_id": "C-17",
+        "title": "Complete Anti-Harassment training (LMS)",
+        "status": "completed",
+        "detail": "Completed by user.",
+        "timestamp": "2026-03-14T15:04:33"
+      },
+      {
+        "task_id": "C-18",
+        "title": "Complete Insider Threat Awareness training (LMS)",
+        "status": "completed",
+        "detail": "Completed by user.",
+        "timestamp": "2026-03-14T15:04:35"
+      },
+      {
+        "task_id": "C-19",
+        "title": "Sign Employee Handbook Acknowledgment (DocuSign)",
+        "status": "completed",
+        "detail": "Completed by user.",
+        "timestamp": "2026-03-14T15:04:37"
+      },
+      {
+        "task_id": "C-20",
+        "title": "Sign NDA (DocuSign)",
+        "status": "completed",
+        "detail": "Completed by user.",
+        "timestamp": "2026-03-14T15:04:38"
+      },
+      {
+        "task_id": "C-21",
+        "title": "Sign Acceptable Use Policy (DocuSign)",
+        "status": "completed",
+        "detail": "Completed by user.",
+        "timestamp": "2026-03-14T15:04:40"
+      },
+      {
+        "task_id": "C-22",
+        "title": "Sign IP Assignment Agreement (DocuSign)",
+        "status": "completed",
+        "detail": "Completed by user.",
+        "timestamp": "2026-03-14T15:04:42"
+      },
+      {
+        "task_id": "C-23",
+        "title": "Attend welcome call with HR",
+        "status": "completed",
+        "detail": "Completed by user.",
+        "timestamp": "2026-03-14T15:04:44"
+      },
+      {
+        "task_id": "C-24",
+        "title": "Meet your manager (1:1 intro call)",
+        "status": "completed",
+        "detail": "Completed by user.",
+        "timestamp": "2026-03-14T15:04:45"
+      },
+      {
+        "task_id": "C-25",
+        "title": "Meet your mentor/buddy (intro call)",
+        "status": "completed",
+        "detail": "Completed by user.",
+        "timestamp": "2026-03-14T15:04:50"
+      },
+      {
+        "task_id": "C-26",
+        "title": "Attend team standup",
+        "status": "completed",
+        "detail": "Completed by user.",
+        "timestamp": "2026-03-14T15:04:53"
+      },
+      {
+        "task_id": "C-27",
+        "title": "Set up BambooHR profile (personal details, emergency contacts)",
+        "status": "completed",
+        "detail": "Completed by user.",
+        "timestamp": "2026-03-14T15:05:01"
+      },
+      {
+        "task_id": "C-28",
+        "title": "Set up Expensify account",
+        "status": "completed",
+        "detail": "Completed by user.",
+        "timestamp": "2026-03-14T15:05:03"
+      },
+      {
+        "task_id": "BI-01",
+        "title": "Install Node.js 20 via nvm",
+        "status": "completed",
+        "detail": "Completed by user.",
+        "timestamp": "2026-03-14T15:05:04"
+      },
+      {
+        "task_id": "BI-02",
+        "title": "Install pnpm and global tools (TypeScript, nodemon)",
+        "status": "completed",
+        "detail": "Completed by user.",
+        "timestamp": "2026-03-14T15:05:06"
+      },
+      {
+        "task_id": "BI-03",
+        "title": "Install Docker Desktop",
+        "status": "completed",
+        "detail": "Completed by user.",
+        "timestamp": "2026-03-14T15:05:07"
+      },
+      {
+        "task_id": "BI-04",
+        "title": "Install VS Code with mandatory extensions",
+        "status": "completed",
+        "detail": "Completed by user.",
+        "timestamp": "2026-03-14T15:05:09"
+      },
+      {
+        "task_id": "BI-05",
+        "title": "Clone assigned repository (connector-runtime)",
+        "status": "completed",
+        "detail": "Completed by user.",
+        "timestamp": "2026-03-14T15:05:11"
+      },
+      {
+        "task_id": "BI-06",
+        "title": "Set up local environment (.env configuration)",
+        "status": "completed",
+        "detail": "Completed by user.",
+        "timestamp": "2026-03-14T15:05:14"
+      },
+      {
+        "task_id": "BI-07",
+        "title": "Run Docker Compose for local dependencies",
+        "status": "completed",
+        "detail": "Completed by user.",
+        "timestamp": "2026-03-14T15:05:15"
+      },
+      {
+        "task_id": "BI-08",
+        "title": "Run database migrations and seed data",
+        "status": "completed",
+        "detail": "Completed by user.",
+        "timestamp": "2026-03-14T15:05:18"
+      },
+      {
+        "task_id": "BI-09",
+        "title": "Successfully start the service locally",
+        "status": "completed",
+        "detail": "Completed by user.",
+        "timestamp": "2026-03-14T15:05:20"
+      },
+      {
+        "task_id": "BI-10",
+        "title": "Run unit tests and verify all pass",
+        "status": "completed",
+        "detail": "Completed by user.",
+        "timestamp": "2026-03-14T15:05:21"
+      },
+      {
+        "task_id": "BI-11",
+        "title": "Read Architecture Documentation — Backend section (KB-003)",
+        "status": "completed",
+        "detail": "Completed by user.",
+        "timestamp": "2026-03-14T15:05:31"
+      },
+      {
+        "task_id": "BI-12",
+        "title": "Read API Standards section of Engineering Standards (KB-002)",
+        "status": "completed",
+        "detail": "Completed by user.",
+        "timestamp": "2026-03-14T15:05:33"
+      },
+      {
+        "task_id": "BI-13",
+        "title": "Read Git & Branching Strategy section (KB-002)",
+        "status": "completed",
+        "detail": "Completed by user.",
+        "timestamp": "2026-03-14T15:05:34"
+      },
+      {
+        "task_id": "BI-14",
+        "title": "Read PR Guidelines section (KB-002)",
+        "status": "completed",
+        "detail": "Completed by user.",
+        "timestamp": "2026-03-14T15:05:36"
+      },
+      {
+        "task_id": "BI-15",
+        "title": "Complete Git workflow practice (create branch, make commit, open PR)",
+        "status": "completed",
+        "detail": "branch=feat/flow-intern-001-setup-env",
+        "timestamp": "2026-03-14T15:05:39"
+      },
+      {
+        "task_id": "BI-16",
+        "title": "Attend codebase walkthrough with mentor",
+        "status": "completed",
+        "detail": "Completed by user.",
+        "timestamp": "2026-03-14T15:05:47"
+      }
+    ],
+    "latest_screenshot_artifact": null,
+    "health": {
+      "mode": "dev_mock",
+      "vector_backend": "memory",
+      "browser_backend": "mock",
+      "browser_impl": "MockBrowserAdapter",
+      "browser_ready": "yes",
+      "docker": "yes",
+      "sandbox_backend": "MockSandboxManager"
+    },
+    "progress": {
+      "total": 48,
+      "completed": 43,
+      "in_progress": 0,
+      "pending": 4,
+      "blocked": 0,
+      "skipped": 1
+    },
+    "persona_label": "Riya Sharma - Backend / Intern",
+    "next_action": "Review the completion report and share it with HR.",
+    "completion_ready": true
+  },
+  "sandbox_session": {
+    "session_id": "mock-sandbox",
+    "stream_url": "https://example.invalid/mock-novnc",
+    "backend": "mock",
+    "metadata": {
+      "node_version": "v20.11.0",
+      "pnpm_version": "8.15.0",
+      "current_branch": "feat/flow-intern-001-setup-env"
+    }
+  },
+  "knowledge_hits": [
+    {
+      "chunk": {
+        "chunk_id": "setup_guides:novabyte-technologies-setup-guides-1-backend-intern-node-js-local-setup:1",
+        "source_path": "C:\\Users\\User\\Documents\\GitHub\\Syrus2026_Snack_overflow\\datset\\setup_guides.md",
+        "title": "NovaByte Technologies — Setup Guides > 1. Backend Intern (Node.js) Local Setup",
+        "text": "1. Backend Intern (Node.js) Local Setup",
+        "metadata": {
+          "headings": [
+            "NovaByte Technologies — Setup Guides",
+            "1. Backend Intern (Node.js) Local Setup"
+          ]
+        }
+      },
+      "score": 0.35355339059327384
+    },
+    {
+      "chunk": {
+        "chunk_id": "setup_guides:novabyte-technologies-setup-guides-2-junior-backend-python-fastapi-clone-and-bootstrap:9",
+        "source_path": "C:\\Users\\User\\Documents\\GitHub\\Syrus2026_Snack_overflow\\datset\\setup_guides.md",
+        "title": "NovaByte Technologies — Setup Guides > 2. Junior Backend (Python / FastAPI) > Clone and bootstrap",
+        "text": "Clone and bootstrap\n\n```bash\ngit clone https://github.com/NovaByte-Technologies/workflow-core-demo.git\ncd workflow-core-demo\npoetry install\npoetry run pytest\n```\n\n---",
+        "metadata": {
+          "headings": [
+            "NovaByte Technologies — Setup Guides",
+            "2. Junior Backend (Python / FastAPI)",
+            "Clone and bootstrap"
+          ]
+        }
+      },
+      "score": 0.25197631533948484
+    }
+  ],
+  "pending_reason": null,
+  "selected_starter_ticket": {
+    "Persona": "backend intern",
+    "Ticket ID": "FLOW-INTERN-001",
+    "Title": "Fix null check in connector handler",
+    "Repo": "connector-runtime-demo",
+    "Repo URL": "https://github.com/NovaByte-Technologies/connector-runtime-demo",
+    "Tracking URL": "https://novabytetechnologies.atlassian.net/browse/FLOW-INTERN-001",
+    "Description": "Add a missing null guard in the connector runtime request handler and include a regression test."
+  },
+  "intake_state": {
+    "pending_fields": [],
+    "awaiting_follow_up": false,
+    "last_prompt": null
+  }
+}

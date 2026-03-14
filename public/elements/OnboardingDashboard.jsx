@@ -3,6 +3,7 @@ import React from "react";
 export default function OnboardingDashboard(props) {
   const items = props.items || [];
   const health = props.health || {};
+  const progress = props.progress || {};
 
   return (
     <div
@@ -17,11 +18,50 @@ export default function OnboardingDashboard(props) {
       }}
     >
       <h3 style={{ marginTop: 0, marginBottom: "8px" }}>Live Verification</h3>
+      <div style={{ fontSize: "14px", marginBottom: "8px" }}>
+        <strong>Persona:</strong> {props.personaLabel || "Collecting onboarding details"}
+      </div>
       <div style={{ fontSize: "14px", marginBottom: "12px" }}>
         <strong>Current task:</strong> {props.currentTask || "Waiting for task"}
       </div>
       <div style={{ fontSize: "14px", marginBottom: "12px" }}>
         <strong>Status:</strong> {props.latestStatus || "Idle"}
+      </div>
+      <div style={{ fontSize: "14px", marginBottom: "12px" }}>
+        <strong>Next action:</strong> {props.nextAction || "Introduce yourself to begin onboarding"}
+      </div>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(110px, 1fr))",
+          gap: "8px",
+          marginBottom: "12px",
+        }}
+      >
+        {[
+          ["Total", progress.total || 0],
+          ["Completed", progress.completed || 0],
+          ["Pending", progress.pending || 0],
+          ["In Progress", progress.in_progress || 0],
+          ["Blocked", progress.blocked || 0],
+          ["Skipped", progress.skipped || 0],
+        ].map(([label, value]) => (
+          <div
+            key={label}
+            style={{
+              background: "#fff6e7",
+              borderRadius: "10px",
+              padding: "8px 10px",
+              fontSize: "12px",
+            }}
+          >
+            <strong>{label}</strong>
+            <div>{value}</div>
+          </div>
+        ))}
+      </div>
+      <div style={{ fontSize: "13px", marginBottom: "12px", color: props.completionReady ? "#166534" : "#7c2d12" }}>
+        <strong>Completion ready:</strong> {props.completionReady ? "Yes" : "No"}
       </div>
       <div
         style={{

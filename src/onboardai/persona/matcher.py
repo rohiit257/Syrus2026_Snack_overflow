@@ -28,26 +28,44 @@ KNOWN_TECH = {
 KNOWN_TOOLS = {"docker", "vs code", "vscode", "node.js", "node", "pnpm", "poetry", "python"}
 
 EXPERIENCE_ORDER = ["intern", "junior", "senior"]
+ROLE_KEYWORDS = {
+    "backend": ("backend", "api", "server"),
+    "frontend": ("frontend", "front end", "react", "ui"),
+    "devops": ("devops", "platform", "sre", "infrastructure"),
+    "full-stack": ("full-stack", "full stack"),
+}
+EXPERIENCE_KEYWORDS = {
+    "intern": ("intern", "internship", "trainee"),
+    "junior": ("junior", "engineer i"),
+    "senior": ("senior", "staff", "lead"),
+}
 
 
 def _normalize_role_family(text: str) -> str:
     lowered = text.lower()
-    if "full-stack" in lowered or "full stack" in lowered:
-        return "full-stack"
-    if "front" in lowered or "react" in lowered:
-        return "frontend"
-    if "devops" in lowered or "platform" in lowered:
-        return "devops"
-    return "backend"
+    for role, markers in ROLE_KEYWORDS.items():
+        if any(marker in lowered for marker in markers):
+            return role
+    return ""
 
 
 def _normalize_experience(text: str) -> str:
     lowered = text.lower()
-    if "senior" in lowered or "staff" in lowered:
-        return "senior"
-    if "junior" in lowered or "engineer i" in lowered:
-        return "junior"
-    return "intern"
+    for level, markers in EXPERIENCE_KEYWORDS.items():
+        if any(marker in lowered for marker in markers):
+            return level
+    return ""
+
+
+def missing_profile_fields(profile: EmployeeProfile) -> list[str]:
+    missing: list[str] = []
+    if not profile.role_family:
+        missing.append("role")
+    if not profile.experience_level:
+        missing.append("experience level")
+    if not profile.tech_stack:
+        missing.append("tech stack")
+    return missing
 
 
 def extract_employee_profile(message: str) -> EmployeeProfile:
@@ -90,6 +108,8 @@ class PersonaMatcher:
         return cls(parse_personas(path))
 
     def match(self, profile: EmployeeProfile) -> PersonaMatch:
+        if missing_profile_fields(profile):
+            raise ValueError("Employee profile is incomplete.")
         scored = [self._score(profile, persona) for persona in self.personas]
         scored.sort(key=lambda item: item.score, reverse=True)
         return scored[0]

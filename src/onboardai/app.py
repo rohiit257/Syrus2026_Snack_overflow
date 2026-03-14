@@ -28,20 +28,22 @@ if cl is not None:  # pragma: no cover - exercised in Chainlit runtime
     async def on_chat_start():
         state = ENGINE.new_state()
         cl.user_session.set("state", state)
+        cl.user_session.set("session_id", state.session_id)
         await cl.Message(
             content=(
                 "OnboardAI is ready. Introduce yourself with your role, level, and stack.\n"
-                "Example: Hi, I'm Riya. I've joined as a Backend Intern working on Node.js."
+                "Example: Hi, I'm Riya. I've joined as a Backend Intern working on Node.js.\n"
+                f"Session ID: {state.session_id}"
             )
         ).send()
 
     async def _render_task_panel(state):
-        await cl.Message(content=f"### Checklist\n{_task_markdown(state)}").send()
+        checklist_message = await cl.Message(content=f"### Checklist\n{_task_markdown(state)}").send()
         await cl.CustomElement(
             name="OnboardingDashboard",
             props=build_dashboard_props(state),
             display="side",
-        ).send()
+        ).send(for_id=checklist_message.id)
 
     async def _render_actions():
         actions = [
@@ -56,6 +58,7 @@ if cl is not None:  # pragma: no cover - exercised in Chainlit runtime
         state = cl.user_session.get("state")
         response = ENGINE.handle_message(state, message.content)
         cl.user_session.set("state", state)
+        ENGINE.save_state(state)
         await cl.Message(content=response).send()
         await _render_task_panel(state)
         await _render_actions()
@@ -65,6 +68,7 @@ if cl is not None:  # pragma: no cover - exercised in Chainlit runtime
         state = cl.user_session.get("state")
         response = ENGINE.task_action_router_node(state, TaskAction.WATCH_AGENT)
         cl.user_session.set("state", state)
+        ENGINE.save_state(state)
         await cl.Message(content=response).send()
         await _render_task_panel(state)
         await _render_actions()
@@ -74,6 +78,7 @@ if cl is not None:  # pragma: no cover - exercised in Chainlit runtime
         state = cl.user_session.get("state")
         response = ENGINE.task_action_router_node(state, TaskAction.SELF_COMPLETE)
         cl.user_session.set("state", state)
+        ENGINE.save_state(state)
         await cl.Message(content=response).send()
         await _render_task_panel(state)
         await _render_actions()
@@ -83,6 +88,7 @@ if cl is not None:  # pragma: no cover - exercised in Chainlit runtime
         state = cl.user_session.get("state")
         response = ENGINE.task_action_router_node(state, TaskAction.SKIP, reason="Skipped from UI")
         cl.user_session.set("state", state)
+        ENGINE.save_state(state)
         await cl.Message(content=response).send()
         await _render_task_panel(state)
         await _render_actions()
@@ -93,6 +99,7 @@ def cli_demo(message: str) -> str:
     response = ENGINE.handle_message(state, message)
     return json.dumps(
         {
+            "session_id": state.session_id,
             "response": response,
             "dashboard": build_dashboard_props(state),
             "tasks": [task.model_dump(mode="json") for task in state.task_plan[:10]],

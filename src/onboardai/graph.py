@@ -4,6 +4,7 @@ import json
 import re
 import shutil
 from pathlib import Path
+from uuid import uuid4
 
 from onboardai.adapters.browser import build_browser_adapter
 from onboardai.adapters.e2b import build_sandbox_manager
@@ -21,14 +22,25 @@ from onboardai.local_llm import LocalResponder
 from onboardai.models import (
     AutomationMode,
     ComputerUseInstruction,
+    EmployeeProfile,
     OnboardingState,
     TaskAction,
     TaskPriority,
     TaskStatus,
 )
 from onboardai.persona.matcher import PersonaMatcher, extract_employee_profile
+from onboardai.persona.matcher import missing_profile_fields
+from onboardai.persistence import SessionStore
 from onboardai.rag.retriever import KnowledgeRetriever
-from onboardai.state import choose_next_task, get_current_task, mark_completed, mark_skipped, set_task_status
+from onboardai.state import (
+    choose_next_task,
+    get_current_task,
+    mark_blocked,
+    mark_completed,
+    mark_skipped,
+    progress_snapshot,
+    set_task_status,
+)
 
 
 QUESTION_PREFIXES = ("how", "what", "when", "where", "who", "why", "can", "do", "should")
@@ -62,17 +74,64 @@ class OnboardingEngine:
         self.github = GitHubAdapter()
         self.slack = SlackAdapter()
         self.jira = JiraAdapter()
+        self.session_store = SessionStore(self.config.sessions_dir)
 
     def new_state(self) -> OnboardingState:
-        state = OnboardingState(completion_status="in_progress")
+        state = OnboardingState(completion_status="in_progress", session_id=str(uuid4()))
         state.sandbox_session = self.sandbox_manager.start()
         state.dashboard_state.stream_url = state.sandbox_session.stream_url
         state.dashboard_state.health = self.runtime_health()
+        state.dashboard_state.next_action = "Introduce yourself with your role, experience level, and tech stack."
+        progress_snapshot(state)
+        self.save_state(state)
+        return state
+
+    def save_state(self, state: OnboardingState) -> None:
+        state.dashboard_state.completion_ready = self._ready_for_completion_email(state)
+        progress_snapshot(state)
+        self.session_store.save(state)
+
+    def resume_state(self, session_id: str) -> OnboardingState | None:
+        state = self.session_store.load(session_id)
+        if state is None:
+            return None
+        if state.sandbox_session is None:
+            state.sandbox_session = self.sandbox_manager.start()
+        state.dashboard_state.health = self.runtime_health()
+        self.save_state(state)
         return state
 
     def intake_node(self, state: OnboardingState, message: str) -> str:
-        state.employee_profile = extract_employee_profile(message)
+        extracted = extract_employee_profile(message)
+        state.employee_profile = self._merge_profile(state.employee_profile, extracted)
+        missing = missing_profile_fields(state.employee_profile)
+        state.intake_state.pending_fields = missing
+        state.intake_state.awaiting_follow_up = bool(missing)
+        if missing:
+            prompt = self._follow_up_prompt(missing)
+            state.intake_state.last_prompt = prompt
+            state.dashboard_state.latest_status = "Stage 1: Persona detection awaiting details"
+            state.dashboard_state.next_action = prompt
+            self.save_state(state)
+            return prompt
         return self.persona_match_node(state)
+
+    def _merge_profile(
+        self,
+        existing: EmployeeProfile | None,
+        incoming: EmployeeProfile,
+    ) -> EmployeeProfile:
+        if existing is None:
+            return incoming
+        return EmployeeProfile(
+            name=incoming.name if incoming.name != "New Hire" else existing.name,
+            role_family=incoming.role_family or existing.role_family,
+            experience_level=incoming.experience_level or existing.experience_level,
+            tech_stack=sorted(set(existing.tech_stack) | set(incoming.tech_stack)),
+            department_hint=incoming.department_hint or existing.department_hint,
+            preinstalled_tools=sorted(set(existing.preinstalled_tools) | set(incoming.preinstalled_tools)),
+            email=incoming.email or existing.email,
+        )
 
     def persona_match_node(self, state: OnboardingState) -> str:
         if not state.employee_profile:
@@ -82,8 +141,19 @@ class OnboardingEngine:
         state.selected_starter_ticket = self._starter_ticket_for_state(state)
         choose_next_task(state)
         state.completion_status = "in_progress"
+        state.intake_state.pending_fields = []
+        state.intake_state.awaiting_follow_up = False
         match = state.matched_persona
+        state.dashboard_state.persona_label = (
+            f"{match.persona.name} - {match.persona.role_family.title()} / {match.persona.experience_level.title()}"
+        )
+        state.dashboard_state.latest_status = "Stage 2: Checklist manager prepared a personalized path"
+        state.dashboard_state.next_action = "Review the first task or ask an onboarding question."
+        self.save_state(state)
         return (
+            "PS-03 onboarding flow initialized.\n"
+            "Stage 1: Persona Detection -> complete\n"
+            "Stage 2: Checklist Manager -> personalized plan ready\n\n"
             f"Matched persona: {match.persona.name} ({match.persona.title}). "
             f"Prepared {len(state.task_plan)} onboarding tasks for a {state.employee_profile.role_family} "
             f"{state.employee_profile.experience_level} path.\n\n"
@@ -101,6 +171,7 @@ class OnboardingEngine:
             for hit in hits
         ) or "- No supporting document retrieved."
         evidence = ", ".join(task.evidence_required) if task.evidence_required else "Task acknowledgment"
+        progress = progress_snapshot(state)
         starter_context = ""
         starter_ticket = self._starter_ticket_for_state(state)
         if starter_ticket and (
@@ -119,7 +190,9 @@ class OnboardingEngine:
             f"Category: {task.category}\n"
             f"Priority: {task.priority.value}\n"
             f"Automation: {task.automation_mode.value}\n"
-            f"Evidence: {evidence}\n\n"
+            f"Evidence: {evidence}\n"
+            f"Progress: {progress['completed']}/{progress['total']} completed, "
+            f"{progress['pending']} pending, {progress['blocked']} blocked\n\n"
             f"Relevant context:\n{citations}\n\n"
             f"{starter_context}"
             "Actions available: Watch agent do this / I did it myself / Skip."
@@ -130,8 +203,11 @@ class OnboardingEngine:
         threshold_hits = [hit for hit in hits if hit.score >= self.config.retrieval_threshold]
         if not threshold_hits:
             contact = self._fallback_contact(question)
+            state.dashboard_state.latest_status = "Stage 3: Low-confidence retrieval fallback triggered"
+            state.dashboard_state.next_action = "Contact the recommended owner or continue checklist work."
+            self.save_state(state)
             return (
-                "I cannot find a grounded answer for that in the provided knowledge base. "
+                "Stage 3: RAG Retrieval could not find a confident grounded answer. "
                 f"Please contact {contact.get('Contact Person', 'Tanvi Shah')} "
                 f"({contact.get('Email', 'tanvi.s@novabyte.dev')})."
             )
@@ -143,7 +219,10 @@ class OnboardingEngine:
             f"{Path(hit.chunk.source_path).name} -> {hit.chunk.title}"
             for hit in threshold_hits
         )
-        return f"{llm_answer or excerpt}\n\nSources: {citations}"
+        state.dashboard_state.latest_status = "Stage 3: RAG retrieval answered from the knowledge base"
+        state.dashboard_state.next_action = "Continue the checklist or ask another grounded question."
+        self.save_state(state)
+        return f"Stage 3: RAG Retrieval\n{llm_answer or excerpt}\n\nSources: {citations}"
 
     def task_action_router_node(
         self,
@@ -165,11 +244,13 @@ class OnboardingEngine:
                 detail = ", ".join(f"{key}={value}" for key, value in result.verified_values.items())
                 mark_completed(state, task.task_id, "agent", detail or "Agent completed task.", artifacts=result.artifacts, verified_values=result.verified_values)
             else:
-                set_task_status(state, task.task_id, TaskStatus.BLOCKED)
+                mark_blocked(state, task.task_id, result.failure_reason or "Task execution failed.")
+                self.save_state(state)
                 return f"Task blocked: {result.failure_reason}\n\n{self.task_presentation_node(state)}"
         choose_next_task(state)
         if self._ready_for_completion_email(state):
             return self.email_generation_node(state)
+        self.save_state(state)
         return self.task_presentation_node(state)
 
     def computer_use_dispatch_node(self, state: OnboardingState):
@@ -183,8 +264,11 @@ class OnboardingEngine:
         starter_ticket = self._starter_ticket_for_state(state)
         html_path, json_path = self.email_generator.generate(state, starter_ticket=starter_ticket)
         state.completion_status = "completed"
+        state.dashboard_state.latest_status = "Stage 5: HR completion artifacts generated"
+        state.dashboard_state.next_action = "Review the completion report and share it with HR."
+        self.save_state(state)
         return (
-            "Generated HR completion artifacts.\n"
+            "Stage 5: HR Notification complete.\n"
             f"- HTML report: {html_path}\n"
             f"- JSON summary: {json_path}\n"
             f"- Score: {self.email_generator.build_summary(state, starter_ticket).score}%"
@@ -193,6 +277,8 @@ class OnboardingEngine:
     def handle_message(self, state: OnboardingState, message: str) -> str:
         stripped = message.strip()
         if not state.employee_profile:
+            return self.intake_node(state, stripped)
+        if state.intake_state.awaiting_follow_up:
             return self.intake_node(state, stripped)
         lowered = stripped.lower()
         if stripped.endswith("?") or lowered.startswith(QUESTION_PREFIXES):
@@ -207,9 +293,14 @@ class OnboardingEngine:
     def serialize_dashboard(self, state: OnboardingState) -> str:
         return json.dumps(
             {
+                "session_id": state.session_id,
                 "stream_url": state.dashboard_state.stream_url,
+                "persona_label": state.dashboard_state.persona_label,
                 "current_task": state.dashboard_state.current_task,
                 "latest_status": state.dashboard_state.latest_status,
+                "next_action": state.dashboard_state.next_action,
+                "completion_ready": state.dashboard_state.completion_ready,
+                "progress": state.dashboard_state.progress,
                 "health": state.dashboard_state.health,
                 "items": [item.model_dump(mode="json") for item in state.dashboard_state.items],
             }
@@ -239,10 +330,12 @@ class OnboardingEngine:
 
     def _ready_for_completion_email(self, state: OnboardingState) -> bool:
         required_tasks = [task for task in state.task_plan if task.priority == TaskPriority.REQUIRED]
-        return bool(required_tasks) and all(
+        ready = bool(required_tasks) and all(
             task.status in {TaskStatus.COMPLETED, TaskStatus.SKIPPED}
             for task in required_tasks
         )
+        state.dashboard_state.completion_ready = ready
+        return ready
 
     def _starter_ticket_for_state(self, state: OnboardingState) -> dict[str, str] | None:
         if state.selected_starter_ticket:
@@ -381,6 +474,16 @@ class OnboardingEngine:
             goal=task.title,
             success_criteria=["Task acknowledged"],
             allowed_tools=["none"],
+        )
+
+    def _follow_up_prompt(self, missing_fields: list[str]) -> str:
+        if len(missing_fields) == 1:
+            field_text = missing_fields[0]
+        else:
+            field_text = ", ".join(missing_fields[:-1]) + f", and {missing_fields[-1]}"
+        return (
+            "To personalize your onboarding path, please tell me your "
+            f"{field_text}. Example: 'I'm a Backend Intern working on Node.js.'"
         )
 
     def _instruction_from_setup_guides(

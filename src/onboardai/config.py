@@ -63,6 +63,9 @@ class AppConfig(BaseModel):
     )
     jira_project_key: str = os.getenv("ONBOARDAI_JIRA_PROJECT_KEY", "FLOW")
     outputs_dir: Path = Field(default_factory=lambda: Path("outputs/completion_reports").resolve())
+    sessions_dir: Path = Field(
+        default_factory=lambda: Path(os.getenv("ONBOARDAI_SESSIONS_DIR", "outputs/sessions")).resolve()
+    )
 
     def model_post_init(self, __context) -> None:
         if self.dataset_root is None:
@@ -77,6 +80,7 @@ class AppConfig(BaseModel):
     def ensure_directories(self) -> None:
         self.qdrant_path.mkdir(parents=True, exist_ok=True)
         self.outputs_dir.mkdir(parents=True, exist_ok=True)
+        self.sessions_dir.mkdir(parents=True, exist_ok=True)
 
 
 def load_config() -> AppConfig:

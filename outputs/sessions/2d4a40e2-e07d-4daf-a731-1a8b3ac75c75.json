@@ -1,0 +1,54 @@
+{
+  "session_id": "2d4a40e2-e07d-4daf-a731-1a8b3ac75c75",
+  "employee_profile": null,
+  "matched_persona": null,
+  "task_plan": [],
+  "current_task_id": null,
+  "verification_log": [],
+  "artifact_paths": [],
+  "completion_status": "in_progress",
+  "dashboard_state": {
+    "stream_url": "https://example.invalid/mock-novnc",
+    "current_task": null,
+    "latest_status": null,
+    "items": [],
+    "latest_screenshot_artifact": null,
+    "health": {
+      "mode": "dev_mock",
+      "vector_backend": "memory",
+      "browser_backend": "mock",
+      "browser_impl": "MockBrowserAdapter",
+      "browser_ready": "yes",
+      "docker": "yes",
+      "sandbox_backend": "MockSandboxManager"
+    },
+    "progress": {
+      "total": 0,
+      "completed": 0,
+      "in_progress": 0,
+      "pending": 0,
+      "blocked": 0,
+      "skipped": 0
+    },
+    "persona_label": null,
+    "next_action": "Introduce yourself with your role, experience level, and tech stack.",
+    "completion_ready": false
+  },
+  "sandbox_session": {
+    "session_id": "mock-sandbox",
+    "stream_url": "https://example.invalid/mock-novnc",
+    "backend": "mock",
+    "metadata": {
+      "node_version": "v20.11.0",
+      "pnpm_version": "8.15.0"
+    }
+  },
+  "knowledge_hits": [],
+  "pending_reason": null,
+  "selected_starter_ticket": null,
+  "intake_state": {
+    "pending_fields": [],
+    "awaiting_follow_up": false,
+    "last_prompt": null
+  }
+}

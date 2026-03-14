@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 from onboardai.checklist.planner import ChecklistPlanner
+from onboardai.graph import OnboardingEngine
+from onboardai.config import AppConfig
 from onboardai.persona.matcher import PersonaMatcher, extract_employee_profile
 from onboardai.models import TaskPriority
 
@@ -56,3 +58,24 @@ def test_persona_matcher_preserves_full_stack_role(dataset_root):
     assert profile.role_family == "full-stack"
     assert match.persona.name == "Arjun Nair"
     assert match.persona.role_family == "full-stack"
+
+
+def test_engine_requests_missing_persona_details(project_root):
+    engine = OnboardingEngine(AppConfig(project_root=project_root))
+    state = engine.new_state()
+    response = engine.handle_message(state, "Hi, I'm Riya.")
+    assert "please tell me your" in response.lower()
+    assert state.intake_state.awaiting_follow_up is True
+    assert "role" in state.intake_state.pending_fields
+    assert "tech stack" in state.intake_state.pending_fields
+
+
+def test_engine_merges_follow_up_persona_details(project_root):
+    engine = OnboardingEngine(AppConfig(project_root=project_root))
+    state = engine.new_state()
+    engine.handle_message(state, "Hi, I'm Riya.")
+    response = engine.handle_message(state, "I'm a Backend Intern working on Node.js.")
+    assert "Matched persona: Riya Sharma" in response
+    assert state.employee_profile is not None
+    assert state.employee_profile.name == "Riya"
+    assert state.intake_state.awaiting_follow_up is False

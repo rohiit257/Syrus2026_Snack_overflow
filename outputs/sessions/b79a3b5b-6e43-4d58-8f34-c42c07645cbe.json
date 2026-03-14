@@ -1,0 +1,65 @@
+{
+  "session_id": "b79a3b5b-6e43-4d58-8f34-c42c07645cbe",
+  "employee_profile": {
+    "name": "rohit",
+    "role_family": "",
+    "experience_level": "intern",
+    "tech_stack": [],
+    "department_hint": null,
+    "preinstalled_tools": [],
+    "email": null
+  },
+  "matched_persona": null,
+  "task_plan": [],
+  "current_task_id": null,
+  "verification_log": [],
+  "artifact_paths": [],
+  "completion_status": "in_progress",
+  "dashboard_state": {
+    "stream_url": "https://example.invalid/mock-novnc",
+    "current_task": null,
+    "latest_status": "Stage 1: Persona detection awaiting details",
+    "items": [],
+    "latest_screenshot_artifact": null,
+    "health": {
+      "mode": "dev_mock",
+      "vector_backend": "memory",
+      "browser_backend": "mock",
+      "browser_impl": "MockBrowserAdapter",
+      "browser_ready": "yes",
+      "docker": "yes",
+      "sandbox_backend": "MockSandboxManager"
+    },
+    "progress": {
+      "total": 0,
+      "completed": 0,
+      "in_progress": 0,
+      "pending": 0,
+      "blocked": 0,
+      "skipped": 0
+    },
+    "persona_label": null,
+    "next_action": "To personalize your onboarding path, please tell me your role, and tech stack. Example: 'I'm a Backend Intern working on Node.js.'",
+    "completion_ready": false
+  },
+  "sandbox_session": {
+    "session_id": "mock-sandbox",
+    "stream_url": "https://example.invalid/mock-novnc",
+    "backend": "mock",
+    "metadata": {
+      "node_version": "v20.11.0",
+      "pnpm_version": "8.15.0"
+    }
+  },
+  "knowledge_hits": [],
+  "pending_reason": null,
+  "selected_starter_ticket": null,
+  "intake_state": {
+    "pending_fields": [
+      "role",
+      "tech stack"
+    ],
+    "awaiting_follow_up": true,
+    "last_prompt": "To personalize your onboarding path, please tell me your role, and tech stack. Example: 'I'm a Backend Intern working on Node.js.'"
+  }
+}

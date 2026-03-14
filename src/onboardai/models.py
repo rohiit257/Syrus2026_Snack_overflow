@@ -141,6 +141,10 @@ class DashboardState(BaseModel):
     items: list[DashboardItem] = Field(default_factory=list)
     latest_screenshot_artifact: str | None = None
     health: dict[str, str] = Field(default_factory=dict)
+    progress: dict[str, int] = Field(default_factory=dict)
+    persona_label: str | None = None
+    next_action: str | None = None
+    completion_ready: bool = False
 
 
 class KnowledgeChunk(BaseModel):
@@ -214,6 +218,14 @@ class CompletionSummary(BaseModel):
     verification_log: list[VerificationEntry] = Field(default_factory=list)
     score: int = 0
     notes: str = ""
+    completion_timestamp: str | None = None
+    confidence_label: str = "medium"
+
+
+class IntakeState(BaseModel):
+    pending_fields: list[str] = Field(default_factory=list)
+    awaiting_follow_up: bool = False
+    last_prompt: str | None = None
 
 
 class ContentFile(BaseModel):
@@ -232,6 +244,7 @@ class IntegrationResult(BaseModel):
 
 
 class OnboardingState(BaseModel):
+    session_id: str | None = None
     employee_profile: EmployeeProfile | None = None
     matched_persona: PersonaMatch | None = None
     task_plan: list[ChecklistTask] = Field(default_factory=list)
@@ -244,3 +257,4 @@ class OnboardingState(BaseModel):
     knowledge_hits: list[SearchHit] = Field(default_factory=list)
     pending_reason: str | None = None
     selected_starter_ticket: dict[str, str] | None = None
+    intake_state: IntakeState = Field(default_factory=IntakeState)

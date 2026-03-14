@@ -1,3 +1,21 @@
+Metadata-Version: 2.4
+Name: onboardai
+Version: 0.1.0
+Summary: Hackathon MVP for the PS-03 autonomous developer onboarding agent.
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: chainlit>=2.0.0
+Requires-Dist: ollama>=0.5.1
+Requires-Dist: langgraph>=0.3.0
+Requires-Dist: playwright>=1.54.0
+Requires-Dist: pydantic>=2.11.0
+Requires-Dist: python-dotenv>=1.0.1
+Requires-Dist: qdrant-client>=1.14.0
+Requires-Dist: sentence-transformers>=4.1.0
+Requires-Dist: e2b-desktop>=1.8.0
+Provides-Extra: dev
+Requires-Dist: pytest>=8.3.0; extra == "dev"
+
 # OnboardAI
 
 Hackathon MVP for `PS-03: Autonomous Developer Onboarding Agent`.

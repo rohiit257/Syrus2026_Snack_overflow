@@ -11,6 +11,30 @@ from onboardai.models import (
 )
 
 
+def progress_snapshot(state: OnboardingState) -> dict[str, int]:
+    progress = {
+        "total": len(state.task_plan),
+        "completed": 0,
+        "in_progress": 0,
+        "pending": 0,
+        "blocked": 0,
+        "skipped": 0,
+    }
+    for task in state.task_plan:
+        if task.status == TaskStatus.COMPLETED:
+            progress["completed"] += 1
+        elif task.status == TaskStatus.IN_PROGRESS:
+            progress["in_progress"] += 1
+        elif task.status == TaskStatus.BLOCKED:
+            progress["blocked"] += 1
+        elif task.status == TaskStatus.SKIPPED:
+            progress["skipped"] += 1
+        else:
+            progress["pending"] += 1
+    state.dashboard_state.progress = progress
+    return progress
+
+
 def get_current_task(state: OnboardingState) -> ChecklistTask | None:
     if not state.current_task_id:
         return None
@@ -21,13 +45,16 @@ def get_current_task(state: OnboardingState) -> ChecklistTask | None:
 
 
 def choose_next_task(state: OnboardingState) -> ChecklistTask | None:
+    progress_snapshot(state)
     for task in state.task_plan:
         if task.status in {TaskStatus.NOT_STARTED, TaskStatus.IN_PROGRESS}:
             state.current_task_id = task.task_id
             state.dashboard_state.current_task = task.title
+            state.dashboard_state.next_action = f"Complete or verify `{task.task_id}`."
             return task
     state.current_task_id = None
     state.dashboard_state.current_task = None
+    state.dashboard_state.next_action = "Generate and review the HR completion summary."
     return None
 
 
@@ -64,6 +91,7 @@ def record_verification(
         if artifact.lower().endswith((".png", ".jpg", ".jpeg")):
             state.dashboard_state.latest_screenshot_artifact = artifact
             break
+    progress_snapshot(state)
 
 
 def mark_completed(
@@ -103,6 +131,22 @@ def mark_skipped(state: OnboardingState, task_id: str, reason: str) -> None:
             task_title=task.title,
             status=TaskStatus.SKIPPED,
             method="skip",
+            details=reason,
+        ),
+    )
+
+
+def mark_blocked(state: OnboardingState, task_id: str, reason: str) -> None:
+    task = set_task_status(state, task_id, TaskStatus.BLOCKED)
+    if not task:
+        return
+    record_verification(
+        state,
+        VerificationEntry(
+            task_id=task.task_id,
+            task_title=task.title,
+            status=TaskStatus.BLOCKED,
+            method="agent",
             details=reason,
         ),
     )

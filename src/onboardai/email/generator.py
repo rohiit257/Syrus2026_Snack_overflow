@@ -22,6 +22,7 @@ class CompletionReportGenerator:
         completed = [task for task in state.task_plan if task.status == TaskStatus.COMPLETED]
         pending = [task for task in state.task_plan if task.status in {TaskStatus.NOT_STARTED, TaskStatus.IN_PROGRESS, TaskStatus.BLOCKED}]
         skipped = [task for task in state.task_plan if task.status == TaskStatus.SKIPPED]
+        completion_timestamp = datetime.utcnow().isoformat()
         summary = CompletionSummary(
             employee_name=state.employee_profile.name if state.employee_profile else "New Hire",
             employee_email=state.employee_profile.email if state.employee_profile else None,
@@ -35,8 +36,10 @@ class CompletionReportGenerator:
             pending_items=pending,
             skipped_items=skipped,
             verification_log=state.verification_log,
+            completion_timestamp=completion_timestamp,
         )
         summary.score = self._compute_score(summary, state)
+        summary.confidence_label = self._confidence_label(summary.score)
         if starter_ticket:
             summary.notes = f"Starter ticket selected: {starter_ticket.get('Ticket ID', 'N/A')}."
         return summary
@@ -60,8 +63,14 @@ class CompletionReportGenerator:
                     "report_id": report_id,
                     "generated_at": timestamp.isoformat(),
                     "employee": summary.employee_name,
+                    "employee_email": summary.employee_email,
                     "role": summary.role,
                     "team": summary.team,
+                    "completed_tasks": [task.title for task in summary.completed_items],
+                    "pending_tasks": [task.title for task in summary.pending_items],
+                    "completion_timestamp": summary.completion_timestamp,
+                    "confidence_score": summary.score,
+                    "confidence_label": summary.confidence_label,
                     "score": summary.score,
                     "completed_items": [task.model_dump() for task in summary.completed_items],
                     "pending_items": [task.model_dump() for task in summary.pending_items],
@@ -139,6 +148,7 @@ class CompletionReportGenerator:
             "skipped_count": str(len(summary.skipped_items)),
             "pending_count": str(len(summary.pending_items)),
             "score": str(summary.score),
+            "completion_timestamp_iso": summary.completion_timestamp or timestamp.isoformat(),
             "any_additional_notes_or_observations": summary.notes or "Hackathon MVP completion report.",
             "generation_timestamp_iso": timestamp.isoformat(),
             "report_uuid": report_id,
@@ -220,5 +230,13 @@ class CompletionReportGenerator:
       <pre>{html.escape(report_text)}</pre>
     </div>
   </body>
-</html>
+        </html>
 """
+
+    @staticmethod
+    def _confidence_label(score: int) -> str:
+        if score >= 85:
+            return "high"
+        if score >= 60:
+            return "medium"
+        return "low"
